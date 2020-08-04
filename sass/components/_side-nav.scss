@@ -1,0 +1,87 @@
+.side-nav {
+    font-size: 1.4rem;
+    list-style: none;
+    margin-top: 3.5rem;
+
+    @media screen and (max-width: $bp-medium) {
+        display: flex;
+        margin-top: 0;
+    }
+    
+    &__item {
+        position: relative;
+
+        @media screen and (max-width: $bp-medium) {
+            flex: 1;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: .5rem;
+
+            @media screen and (max-width: $bp-medium) {
+                margin-bottom: 0;
+            }
+        }
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 3px;
+            background-color: var(--color-primary);
+            transform: scaleY(0);
+            transition: transform .2s, width cubic-bezier(1,0,0,1) .4s .2s, background-color .1s;
+        }
+        &:hover::before,
+        &--selected::before {
+            transform: scaleY(1);
+            width: 100%;
+        }
+        &:active::before {
+            background-color: var(--color-primary-light);
+        }
+    }
+    
+
+
+    &__link {
+
+        &:link,
+        &:visited {
+            color: var(--color-lgrey-1);
+            text-decoration: none;
+            text-transform: uppercase;
+            padding: 1.5rem 3rem;
+            position: relative; // z-index only works if a position is specified
+            z-index: 1;
+            display: flex;
+            align-items: center;
+
+            @media screen and (max-width: $bp-medium) {
+                justify-content: center;
+                padding: 2rem;
+            }
+
+            @media screen and (max-width: $bp-small) {
+                flex-direction: column;
+                padding: 1.5rem .5rem;
+            }
+        }
+
+        &-icon {
+            width: 1.75rem;
+            height: 1.75rem;
+            margin-right: 2rem;
+            fill: currentColor;
+
+            @media screen and (max-width: $bp-small) {
+                width: 1.5rem;
+                height: 1.5rem;
+                margin-right: 0;
+                margin-bottom: .5rem;
+            }
+        }
+    }
+}
+

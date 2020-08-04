@@ -1,0 +1,52 @@
+.btn-slide {
+    border: none;
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    border-radius: 100px;
+    background-image: linear-gradient(to right, var(--color-primary-light), var(--color-primary-dark));
+    color: #fff;
+    position: relative; // for &__invisible's absolute positioning
+    overflow: hidden; // to hide &__invisible while it is outside of the button
+    cursor: pointer;
+    transition: all .2s;
+
+    & > * {
+        height: 100%;
+        width: 100%;
+        transition: all .2s;
+        display: inline-block; // to allow top and bottom padding
+    }
+
+    &:active {
+        transform: translateY(10px);
+    }
+
+    &:hover {
+        background-image: linear-gradient(to left, var(--color-primary-light), var(--color-primary-dark));
+        transform: scale(1.1);
+    }
+
+    &:hover &__visible {
+        transform: translateY(100%);
+    }
+
+    &:hover &__invisible {
+        top: 0;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &__visible {
+        padding: 2rem 7.5rem;
+    }
+
+    &__invisible {
+        padding: 2rem 0;
+        position: absolute;
+        left: 0;
+        top: -100%;
+    }
+}

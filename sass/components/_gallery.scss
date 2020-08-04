@@ -1,0 +1,12 @@
+.gallery {
+    display: flex;
+
+    @media screen and (max-width: $bp-smaller) {
+        flex-wrap: wrap;
+    }
+
+    &__image {
+        width: 100%;
+        display: block; // gets rid of spacing in between images
+    }
+}
